@@ -5,8 +5,12 @@ let socket = io();
 
 socket.on('newPositions', (data) => {
   ctx.clearRect(0, 0, 500, 500);
-  data.forEach((elem) => {
+  data.players.forEach((elem) => {
     ctx.fillText(elem.number, elem.x, elem.y);
+  });
+
+  data.bullets.forEach((elem) => {
+    ctx.fillRect(elem.x-5, elem.y-5, 10, 10);
   });
 });
 

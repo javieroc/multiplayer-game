@@ -2,7 +2,7 @@
 
 const Entity = require('./Entity');
 
-class Player extends Entity{
+class Player extends Entity {
 
   constructor(id){
     super(id);

@@ -13,9 +13,11 @@ app.get('/', (req, res) => {
 
 const Player = require('./Player');
 const PlayerHandler = require('./PlayerHandler');
+const BulletHandler = require('./BulletHandler');
 
 let SOCKET_LIST = [];
 let playerHandler = new PlayerHandler();
+let bulletHandler = new BulletHandler();
 
 io.on('connection', (socket) => {
   socket.id = Math.random();
@@ -34,7 +36,10 @@ io.on('connection', (socket) => {
 
 // Game Loop
 setInterval(() => {
-  let pack = playerHandler.update();
+  let pack = {
+    players: playerHandler.update(),
+    bullets: bulletHandler.update(),
+  }
 
   for (let i in SOCKET_LIST){
     let socket = SOCKET_LIST[i];
