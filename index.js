@@ -12,40 +12,18 @@ app.get('/', (req, res) => {
 });
 
 
+const Player = require('./Player');
+
 let SOCKET_LIST = [];
 let PLAYER_LIST = [];
 
-var Player = function(id){
-  var self = {
-    x: 250,
-    y: 250,
-    id: id,
-    number: "" + Math.floor(10 * Math.random()),
-    pressingUp: false,
-    pressingDown: false,
-    pressingRight: false,
-    pressingLeft: false,
-    maxSpeed: 10,
-  }
-  self.updatePosition = function(){
-    if(self.pressingUp)
-      self.y -= self.maxSpeed;
-    if(self.pressingDown)
-      self.y += self.maxSpeed;
-    if(self.pressingRight)
-      self.x += self.maxSpeed;
-    if(self.pressingLeft)
-      self.x -= self.maxSpeed;
-  }
-
-  return self;
-}
 
 io.on('connection', (socket) => {
   socket.id = Math.random();
   SOCKET_LIST[socket.id] = socket;
 
-  let player = Player(socket.id);
+  //let player = Player(socket.id);
+  let player = new Player(socket.id)
   PLAYER_LIST[player.id] = player;
 
   socket.on('disconnect', () => {
@@ -70,7 +48,7 @@ setInterval(() => {
 
   for (let i in PLAYER_LIST){
     let player = PLAYER_LIST[i];
-    player.updatePosition();
+    player.update();
 
     playersData.push({
       x: player.x,
