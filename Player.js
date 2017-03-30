@@ -35,6 +35,19 @@ class Player extends Entity{
       this.speedX = 0;
   }
 
+  onConnect(socket){
+    socket.on('keyPress', (data) => {
+      if(data.inputId === 'up')
+        this.pressingUp = data.state;
+      else if (data.inputId === 'down')
+        this.pressingDown = data.state;
+      else if (data.inputId === 'right')
+        this.pressingRight = data.state;
+      else if (data.inputId === 'left')
+        this.pressingLeft = data.state;
+    });
+  }
+
 }
 
 module.exports = Player;
