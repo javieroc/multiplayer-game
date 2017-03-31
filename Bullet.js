@@ -2,8 +2,10 @@ const Entity = require('./Entity');
 
 class Bullet extends Entity{
 
-  constructor(angle){
+  constructor(angle, x, y){
     super(Math.random());
+    this.x = x;
+    this.y = y;
     this.speedX = Math.cos(angle/180*Math.PI) * 10;
     this.speedY = Math.sin(angle/180*Math.PI) * 10;
     this.timer = 0;

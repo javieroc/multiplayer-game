@@ -23,7 +23,7 @@ io.on('connection', (socket) => {
   socket.id = Math.random();
   SOCKET_LIST[socket.id] = socket;
 
-  let player = new Player(socket.id);
+  let player = new Player(socket.id, bulletHandler);
   playerHandler.add(player);
   player.onConnect(socket);
 

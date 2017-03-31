@@ -1,16 +1,20 @@
 'use strict';
 
 const Entity = require('./Entity');
+const Bullet = require('./Bullet');
 
 class Player extends Entity {
 
-  constructor(id){
+  constructor(id, bulletHandler){
     super(id);
+    this.bulletHandler = bulletHandler;
     this.number = "" + Math.floor(10 * Math.random());
     this.pressingUp = false;
     this.pressingDown = false;
     this.pressingRight = false;
     this.pressingLeft = false;
+    this.pressingAttack = false;
+    this.mouseAngle = 0;
     this.maxSpeed = 10;
   }
 
@@ -33,6 +37,9 @@ class Player extends Entity {
       this.speedX -= this.maxSpeed;
     else
       this.speedX = 0;
+
+    if(this.pressingAttack)
+      this.shootBullet(this.mouseAngle);
   }
 
   onConnect(socket){
@@ -45,7 +52,16 @@ class Player extends Entity {
         this.pressingRight = data.state;
       else if (data.inputId === 'left')
         this.pressingLeft = data.state;
+      else if (data.inputId === 'attack')
+        this.pressingAttack = data.state;
+      else if (data.inputId === 'mouseAngle')
+        this.mouseAngle = data.state;
     });
+  }
+
+  shootBullet(angle){
+    let bullet = new Bullet(angle, this.x, this.y);
+    this.bulletHandler.add(bullet);
   }
 
 }

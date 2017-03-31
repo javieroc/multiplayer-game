@@ -49,6 +49,21 @@ class CanvasReact extends Component {
       else if(event.keyCode === 65 || event.keyCode === 37)
         socket.emit('keyPress', {inputId: 'left', state: false});
     }
+
+    document.onmousedown = function(event){
+      socket.emit('keyPress', {inputId: 'attack', state: true});
+    }
+
+    document.onmouseup = function(event){
+      socket.emit('keyPress', {inputId: 'attack', state: false});
+    }
+
+    document.onmousemove = function(event){
+      let x = -250 + event.clientX - 8;
+      let y = -250 + event.clientY - 8;
+      let angle = Math.atan2(y, x) / Math.PI * 180;
+      socket.emit('keyPress', {inputId: 'mouseAngle', state: angle});
+    }
   }
 
   render(){

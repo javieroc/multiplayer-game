@@ -1,4 +1,4 @@
-const Bullet = require('./Bullet');
+'use strict'
 
 class BulletHandler {
 
@@ -11,11 +11,6 @@ class BulletHandler {
   }
 
   update(){
-    if (Math.random() < 0.1) {
-      let bullet = new Bullet(Math.random()*360);
-      this.add(bullet);
-    }
-
     let pack = [];
 
     for (let i in this.bulletList){
