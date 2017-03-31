@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-const socket = io();
 const styles = {
   border: "1px solid #000000"
 }
@@ -15,6 +14,8 @@ class CanvasReact extends Component {
   componentDidMount(){
     let ctx = this.refs.canvas.getContext('2d')
     ctx.font = '30px Arial';
+
+    let socket = this.props.socket
 
     socket.on('newPositions', (data) => {
       ctx.clearRect(0, 0, 500, 500)

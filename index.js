@@ -32,6 +32,13 @@ io.on('connection', (socket) => {
     playerHandler.onDisconnect(socket);
   });
 
+  socket.on('sendMessage', (message) => {
+    let playerName = ("" + socket.id).slice(2,7);
+    for(let i in SOCKET_LIST){
+      SOCKET_LIST[i].emit('addMessage', playerName + ': ' + message);
+    }
+  });
+
 });
 
 // Game Loop

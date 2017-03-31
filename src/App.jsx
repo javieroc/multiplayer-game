@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import CanvasReact from './CanvasReact'
+import Chat from './Chat'
+
+const socket = io();
 
 class App extends Component {
 
@@ -10,7 +13,8 @@ class App extends Component {
   render(){
     return(
       <div>
-        <CanvasReact />
+        <CanvasReact socket={socket} />
+        <Chat socket={socket} />
       </div>
     )
   }
