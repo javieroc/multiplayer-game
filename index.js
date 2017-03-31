@@ -5,10 +5,10 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-app.use('/client', express.static(__dirname + '/client'));
+app.use('/public', express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/client/index.html');
+  res.sendFile(__dirname + '/public/index.html');
 });
 
 const Player = require('./Player');
