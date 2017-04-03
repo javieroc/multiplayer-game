@@ -16,6 +16,8 @@ class Player extends Entity {
     this.pressingAttack = false;
     this.mouseAngle = 0;
     this.maxSpeed = 10;
+    this.width = 68;
+    this.height = 72;
   }
 
   update(){
@@ -60,7 +62,7 @@ class Player extends Entity {
   }
 
   shootBullet(angle){
-    let bullet = new Bullet(angle, this.x, this.y);
+    let bullet = new Bullet(this, angle, this.x, this.y);
     this.bulletHandler.add(bullet);
   }
 

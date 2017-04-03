@@ -17,6 +17,11 @@ class CanvasReact extends Component {
 
     let socket = this.props.socket
 
+    this.update(socket)
+    this.draw(ctx, socket)
+  }
+
+  draw(ctx, socket){
     socket.on('newPositions', (data) => {
       ctx.clearRect(0, 0, 500, 500)
       data.players.forEach((elem) => {
@@ -27,7 +32,9 @@ class CanvasReact extends Component {
         ctx.fillRect(elem.x-5, elem.y-5, 10, 10)
       })
     })
+  }
 
+  update(socket){
     document.onkeydown = function(event){
       if(event.keyCode === 87 || event.keyCode === 38)
         socket.emit('keyPress', {inputId: 'up', state: true});
