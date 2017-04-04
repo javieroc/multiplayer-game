@@ -7,7 +7,7 @@ const io = require('socket.io')(server);
 
 app.use('/public', express.static(__dirname + '/public'));
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
 
@@ -20,6 +20,7 @@ let playerHandler = new PlayerHandler();
 let bulletHandler = new BulletHandler();
 
 io.on('connection', (socket) => {
+  console.log('new player conected');
   socket.id = Math.random();
   SOCKET_LIST[socket.id] = socket;
 
