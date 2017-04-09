@@ -12,10 +12,8 @@ const socket = io();
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
-    <Route
-      {...rest}
-      render={(props) => authed === true
-        ? <Component {...props} />
+    <Route {...rest} render={(props) => authed === true
+        ? <Component {...props} socket={socket} />
         : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}
     />
   )
@@ -104,7 +102,7 @@ class App extends Component {
                 <Route path='/' exact component={Home} />
                 <PublicRoute authed={this.state.authed} path='/login' component={Login} />
                 <PublicRoute authed={this.state.authed} path='/register' component={Register} />
-                <PrivateRoute authed={this.state.authed} path='/game' component={Game} socket={socket} />
+                <PrivateRoute authed={this.state.authed} path='/game' component={Game} />
                 <Route render={() => <h3>No Match</h3>} />
               </Switch>
             </div>

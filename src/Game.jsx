@@ -10,6 +10,7 @@ class Game extends Component {
 
   render(){
     let socket = this.props.socket
+    console.log(this.props)
 
     return(
       <div>

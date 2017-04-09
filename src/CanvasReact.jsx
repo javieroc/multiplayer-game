@@ -57,6 +57,7 @@ class CanvasReact extends Component {
         socket.emit('keyPress', {inputId: 'left', state: false});
     }
 
+    /*
     document.onmousedown = function(event){
       socket.emit('keyPress', {inputId: 'attack', state: true});
     }
@@ -71,6 +72,7 @@ class CanvasReact extends Component {
       let angle = Math.atan2(y, x) / Math.PI * 180;
       socket.emit('keyPress', {inputId: 'mouseAngle', state: angle});
     }
+    */
   }
 
   render(){
