@@ -1,0 +1,63 @@
+@font-face{
+    font-family: 'Fira Code';
+    src: url('../fonts/FiraCode/eot/FiraCode-Regular.eot');
+    src: url('../fonts/FiraCode/eot/FiraCode-Regular.eot') format('embedded-opentype'),
+         url('../fonts/FiraCode/woff2/FiraCode-Regular.woff2') format('woff2'),
+         url('../fonts/FiraCode/woff/FiraCode-Regular.woff') format('woff'),
+         url('../fonts/FiraCode/ttf/FiraCode-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body, html {
+    background-color: #2A5366;
+    background: url(../img/ocean.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Fira Code';
+}
+
+.fluorescent-panel {
+    border: solid 4px #FD5F00;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow:
+        0 0 10px #FD5F00,
+        inset 0 0 10px #FD5F00;
+    color: #FD5F00;
+    opacity: 0.9;
+    padding: 1.2em;
+}
+
+.parallelogram {
+    width: 100px;
+    height: 20px;
+    -webkit-transform: skew(-20deg);
+       -moz-transform: skew(-20deg);
+         -o-transform: skew(-20deg);
+    background: #FD5F00;
+    box-shadow:
+        0 0 10px #FD5F00,
+        inset 0 0 10px #FD5F00;
+    margin-left: 30px;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.custom-input {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #FD5F00;
+}
+
+.custom-button {
+    background-color: #666A73;
+    border-color: #666A73;
+    border-radius: 0;
+    color: #E5E5F0;
+}
+
+.custom-button:hover {
+    background-color: #3D424F;
+    border-color: #3D424F;
+}

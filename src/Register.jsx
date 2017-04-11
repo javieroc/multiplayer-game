@@ -28,18 +28,20 @@ class Register extends Component {
   render() {
     return(
       <div className="col-sm-6 col-sm-offset-3">
-        <h1>Register</h1>
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label>Email</label>
-            <input type="text" className="form-control" placeholder="Email" ref={(email) => {this.email = email;}} />
-          </div>
-          <div className="form-group">
-            <label>Password</label>
-            <input type="password" className="form-control" placeholder="Password" ref={(password) => {this.password = password;}} />
-          </div>
-          <button type="submit" className="btn btn-primary">Register</button>
-        </form>
+        <div className="parallelogram">REGISTER</div>
+        <div className="fluorescent-panel">
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <label>Email</label>
+              <input type="text" className="form-control custom-input" placeholder="Email" ref={(email) => {this.email = email;}} />
+            </div>
+            <div className="form-group">
+              <label>Password</label>
+              <input type="password" className="form-control custom-input" placeholder="Password" ref={(password) => {this.password = password;}} />
+            </div>
+            <button type="submit" className="btn btn-primary custom-button">Register</button>
+          </form>
+        </div>
       </div>
     )
   }
